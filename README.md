@@ -1,3 +1,8 @@
+# Содержание
+
+Практика с использованием хуков useDefferedValue и useTransition, также в сравнении с обычной фильтрацией данных.
+Для наглядности в dev Tools выставить в performance/ CPU - 6x slowdown
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
