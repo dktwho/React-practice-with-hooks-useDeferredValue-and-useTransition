@@ -1,24 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import data from './data/data';
+import { useMemo, useState } from 'react'
 
 function App() {
+  const [text, setText] = useState('')
+  const [users, setUsers] = useState(data)
+
+  const filteredUser = useMemo(() => {
+    return users.filter(item => item.name.toLocaleLowerCase().includes(text))
+  }, [text])
+
+  const onValueChange = (e) => {
+    setText(e.target.value)
+  }
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <div className="my-flex-cont">
+      <div className='my-flex-box'>
+      <input value={text} type="text" onChange={onValueChange} />
+        {filteredUser.map((user) => {
+          return <div key={user.id}>
+            <h4>{user.name}</h4>
+          </div>
+        })}
+      </div>   
     </div>
+    </>
   );
 }
 
